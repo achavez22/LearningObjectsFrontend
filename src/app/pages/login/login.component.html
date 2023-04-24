@@ -1,0 +1,65 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row mt20">
+            <div class="col-md-6 offset-md-3">
+                <mat-card>
+                    <mat-card-content>
+                        <div class="container text-center">
+                            <img src="../../../assets/img/graphs-statistics_outline.svg" style="width: 300px;" alt="">
+                        </div>
+    
+                        <h1 class="text-center"> Login here</h1>
+                        <!-- {{loginData | json}} -->
+                        <form (ngSubmit)="formSubmit()">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>Username</mat-label>
+                                <input 
+                                [(ngModel)]="loginData.username"
+                                name="username"
+                                required
+                                matInput 
+                                placeholder="Enter here" />
+                                <mat-hint>valid Username</mat-hint>
+                            </mat-form-field>
+    
+                            <!-- <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>Password</mat-label>
+                                <input 
+                                [(ngModel)]="loginData.password"
+                                required
+                                name="password"
+                                type="password"
+                                matInput 
+                                placeholder="Enter here" />
+                                <mat-hint>valid password</mat-hint>
+                            </mat-form-field> -->
+
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>Enter your password</mat-label>
+                                <input 
+                                matInput 
+                                [type]="hide ? 'password' : 'text'"
+                                [(ngModel)]="loginData.password"
+                                name="password"
+                                required
+                                />
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-hint>valid password</mat-hint>
+                              </mat-form-field>
+    
+                            <div class="container text-center">
+                                <button mat-raised-button color="primary" type="submit">Login</button>
+                                <button mat-raised-button color="accent" class="ml10">Reset</button>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                  
+                </mat-card>
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,49 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Read the instructions of this page carefully</mat-card-title>
+                        <mat-card-subtitle>One step more to go</mat-card-subtitle>
+                    </mat-card-header>
+                    <!-- <img matCardImage src="Card wide image source"> -->
+                    <mat-card-content class="mt20">
+                        <h3>{{quiz.title}}</h3> 
+                        <p>{{quiz.description}}</p>
+                        <mat-divider></mat-divider>
+                        <br/>
+                        <h1>Important instructions</h1>
+                        <ul>
+                            <li>This quiz is only for practice purpose.</li>
+                            <li>You have to submit quiz with in time. <b>{{quiz.numberofQuestions * 2}} Minutes</b></li>
+                            <li>There are <b>{{quiz.numberofQuestions}} questions</b> in this quiz</li>
+                            <li>Each questions carries {{quiz.maxMarks / quiz.numberofQuestions }} marks. No negative marking for wrong ones</li>
+                        </ul>
+                        <br>
+                        <h1>Attempting Quiz</h1>
+                        <ul>
+                            <li>Clic <b>Start quiz</b> button to start the quiz</li>
+                            <li>The time will start the moment you click the Start  test button</li>
+                            <li>you can not resume this quiz, if interrupted due to any  reason </li>
+                            <li>Scroll down to move to next question</li>
+                            <li>Click on submit quiz button on completion of the quiz</li>
+                            <li>Report of the test is automatically generated in the form of PDF copy</li>
+                        </ul>
+                    </mat-card-content>
+
+                    
+                    <div class=" container text-center mt20 mb20">
+                        <button 
+                        (click)="startQuiz()"
+                        mat-raised-button 
+                        color="primary">Start QUIZ</button>
+                    </div>
+                    
+                </mat-card>
+            </div>
+
+        </div>
+    </div>
+</div>
