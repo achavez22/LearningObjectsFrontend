@@ -10,7 +10,7 @@ export class NavbarComponent  implements OnInit{
 
   public isLoggedIn = false;  
   public user = null; 
-  constructor(public loginService: LoginService){}
+  constructor(public loginService: LoginService ){}
 
   ngOnInit(): void {
     this.isLoggedIn = this.loginService.isLoginIn(); 
@@ -26,6 +26,8 @@ export class NavbarComponent  implements OnInit{
       this.loginService.logoutUser(); 
       //this.loginService.loginStatusSubject.next(false);
       window.location.reload();
+      
+      
   }
 
 }

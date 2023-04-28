@@ -8,7 +8,7 @@
     </button>
     <span>Learning Objects</span>
     <span class="example-spacer"></span>
-    <label>Login</label>
+    <label *ngIf="!isLoggedIn">Login</label>
     <a 
       *ngIf="!isLoggedIn"
       routerLink="/login"
@@ -17,7 +17,7 @@
       aria-label="Example icon-button with heart icon">
       <mat-icon>login</mat-icon>
     </a>
-    <label>Register</label>
+    <label *ngIf="!isLoggedIn">Register</label>
     <a 
       *ngIf="!isLoggedIn"
       routerLink="/signup"
