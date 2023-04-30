@@ -12,11 +12,25 @@ export class NormalGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    if(this.loginService.isLoginIn() && this.loginService.getUserRole() =='NORMAL'){ 
+    if(this.loginService.isLoginIn() && this.loginService.getUserRole() ==='NORMAL'){ 
+      if(this.isTokenExpirado()){ 
+        this.loginService.logoutUser(); 
+        this.router.navigate(['/login']);
+      }
+      return true;
+    }
+    this.router.navigate(['/login']);
+    return false;
+  }
+
+  public isTokenExpirado():boolean{ 
+    let token = this.loginService.getToken(); 
+    let payload =  this.loginService.getDataToken(token);
+    let now =  new Date().getTime() / 1000;
+    if(payload < now){ 
       return true; 
     }
-    this.router.navigate(['login']);
-    return false;
+    return false; 
   }
   
 }

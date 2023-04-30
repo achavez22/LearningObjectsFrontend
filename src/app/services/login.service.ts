@@ -10,7 +10,9 @@ export class LoginService {
 
   public loginStatusSubject = new Subject<boolean>(); 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+   }
 
   public getCurrentUser(){ 
      return this.http.get(`${baseUrl}/current-user`); 
@@ -22,7 +24,6 @@ export class LoginService {
 
   public loginUser(token: any): boolean{ 
       localStorage.setItem('token', token); 
-      //this.loginStatusSubject.next(true); 
       return true;
   }
 
@@ -35,11 +36,10 @@ export class LoginService {
     }
   }
 
- 
-
-  public logoutUser(): boolean{ 
+  public logoutUser(): void{ 
     localStorage.removeItem('token'); 
-    return true; 
+    localStorage.removeItem('user'); 
+
   }
 
   //get token 
@@ -59,7 +59,13 @@ export class LoginService {
       this.logoutUser(); 
       return null; 
     }
-    return ;
+  }
+
+  public getDataToken(accessToken : string){ 
+    if(accessToken != null){ 
+        return JSON.parse(atob(accessToken.split(".")[1]));
+    }
+    return null;
   }
 
   //get user role

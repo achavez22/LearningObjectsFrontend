@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -10,7 +11,8 @@ export class NavbarComponent  implements OnInit{
 
   public isLoggedIn = false;  
   public user = null; 
-  constructor(public loginService: LoginService ){}
+  constructor(private loginService: LoginService, 
+    private router: Router){}
 
   ngOnInit(): void {
     this.isLoggedIn = this.loginService.isLoginIn(); 
@@ -23,9 +25,12 @@ export class NavbarComponent  implements OnInit{
   }
 
   public logout(): void{ 
+    
       this.loginService.logoutUser(); 
-      //this.loginService.loginStatusSubject.next(false);
       window.location.reload();
+      this.router.navigate(['/login']); 
+      //this.loginService.loginStatusSubject.next(false);
+      // window.location.reload();
       
       
   }
