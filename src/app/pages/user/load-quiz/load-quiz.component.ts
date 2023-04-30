@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
@@ -10,7 +11,9 @@ import { QuizService } from 'src/app/services/quiz.service';
 export class LoadQuizComponent implements OnInit {
   private catId : number = 0;
   public quizzes = [];  
-  constructor(private router: ActivatedRoute, private quizService: QuizService){}
+  constructor(private router: ActivatedRoute, 
+              private quizService: QuizService, 
+              public loginService:  LoginService){}
 
   ngOnInit(): void {
 

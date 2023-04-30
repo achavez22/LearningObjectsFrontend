@@ -1,7 +1,10 @@
 <div class="bootstrap-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <h1>Available Quizzes</h1>
+            <h1> <span>Bienvenido </span>{{loginService.getNameUser()}}</h1>
+        </div>
+        <div class="row">
+            <h2>Available Quizzes</h2>
         </div>
         <div class="row">
             <div class="col-md-4" *ngFor="let q of quizzes">

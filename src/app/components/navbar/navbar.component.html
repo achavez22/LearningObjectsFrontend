@@ -4,37 +4,34 @@
     routerLink="/"
       mat-icon-button class="example-icon" 
       aria-label="Example icon-button with menu icon">
+      
       <mat-icon>menu_book</mat-icon>
+      
     </button>
     <span>Learning Objects</span>
+    
     <span class="example-spacer"></span>
-    <label *ngIf="!isLoggedIn">Login</label>
+    <label *ngIf="!loginService.isLoginIn()">Login</label>
     <a 
-      *ngIf="!isLoggedIn"
+    *ngIf="!loginService.isLoginIn()"
       routerLink="/login"
       mat-icon-button 
       class="example-icon favorite-icon mr20" 
       aria-label="Example icon-button with heart icon">
       <mat-icon>login</mat-icon>
     </a>
-    <label *ngIf="!isLoggedIn">Register</label>
+    <label *ngIf="!loginService.isLoginIn()">Register</label>
     <a 
-      *ngIf="!isLoggedIn"
+    *ngIf="!loginService.isLoginIn()"
       routerLink="/signup"
       mat-icon-button class="example-icon" 
       aria-label="Example icon-button with share icon">
       <mat-icon>how_to_reg</mat-icon>
     </a>
-    <button 
-      *ngIf="isLoggedIn && user"
-      mat-button
-      class="example-icon mr10 ml20" 
-      aria-label="Example icon-button">
-      {{user.firstName}}  {{user.lastName}} 
-    </button>
+    <label *ngIf="loginService.isLoginIn()">Logout</label>
     <a 
     (click)="logout()"
-      *ngIf="isLoggedIn"
+    *ngIf="loginService.isLoginIn()"
       mat-icon-button 
       class="example-icon mr20 " 
       aria-label="Example icon-button with share icon">

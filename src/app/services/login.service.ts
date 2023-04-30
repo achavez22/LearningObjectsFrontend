@@ -61,6 +61,13 @@ export class LoginService {
     }
   }
 
+  public getNameUser(): string{ 
+    let user = this.getUser();
+    return  user.firstName +' '+ user.lastName;
+    
+  }
+
+
   public getDataToken(accessToken : string){ 
     if(accessToken != null){ 
         return JSON.parse(atob(accessToken.split(".")[1]));
